@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/springboot_001/springboot_001.iml" filepath="$PROJECT_DIR$/springboot_001/springboot_001.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot_ssm/springboot_ssm.iml" filepath="$PROJECT_DIR$/springboot_ssm/springboot_ssm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot_supermarket/springboot_supermarket.iml" filepath="$PROJECT_DIR$/springboot_supermarket/springboot_supermarket.iml" />
+      <module fileurl="file://$PROJECT_DIR$/supermarket_001/supermarket_001.iml" filepath="$PROJECT_DIR$/supermarket_001/supermarket_001.iml" />
+    </modules>
+  </component>
+</project>
