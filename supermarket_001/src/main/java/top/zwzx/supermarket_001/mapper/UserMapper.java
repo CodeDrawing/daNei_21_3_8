@@ -31,7 +31,7 @@ public interface UserMapper {
 
     //    分页获取
     @Select("select limit..... * from smbms_user")
-    public List<User> getUserByNo(int no, int size);
+    public List<User> getUserByPageSize(int no, int size);
 
     //    用户修改信息
     @Update("update smbms_user set userName=#{userName},userPassword=#{userPassword},gender=#{gender},birthday=#{birthday},phone=#{phone},address=#{address},modifyBy=#{modifyBy},modify=#{modify}")

@@ -35,18 +35,23 @@ public class UserController {
         List<User> userByUser = userMapper.getUserByUser(user);
         if(userByUser.size()==1){
 //            httpSession.setAttribute("loginUser",user.getUserName());
-//            httpSession.setAttribute("userName",user.getUserName());
+            httpSession.setAttribute("userName",user.getUserCode());
 //            model.addAttribute("userName","sdf");
             model.addAttribute("userName",user.getUserCode());
             return "frame";
         }else{
+            model.addAttribute("error","用户名或密码错误！");
             return "redirect:/user/toLogin";
         }
     }
     @RequestMapping("/loginOut")
     public String loginOut(HttpSession httpSession){
-        httpSession.removeAttribute("loginuser");
+        httpSession.removeAttribute("userName");
         return "redirect:/user/toLogin";
+    }
+    @RequestMapping("/userList")
+    public String userList(){
+        return "/user/userlist";
     }
 
 }
