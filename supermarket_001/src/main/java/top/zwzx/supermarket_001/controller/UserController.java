@@ -3,9 +3,13 @@ package top.zwzx.supermarket_001.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import top.zwzx.supermarket_001.mapper.UserMapper;
+import top.zwzx.supermarket_001.pojo.Role;
 import top.zwzx.supermarket_001.pojo.User;
+import top.zwzx.supermarket_001.service.IRoleService;
+import top.zwzx.supermarket_001.service.IUserService;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -23,7 +27,11 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    public UserMapper userMapper;
+    private UserMapper userMapper;
+    @Autowired
+    private IRoleService iRoleService;
+    @Autowired
+    private IUserService iUserService;
 
     @RequestMapping("/toLogin")
     public String toLogin(User user){
@@ -37,11 +45,11 @@ public class UserController {
 //            httpSession.setAttribute("loginUser",user.getUserName());
             httpSession.setAttribute("userName",user.getUserCode());
 //            model.addAttribute("userName","sdf");
-            model.addAttribute("userName",user.getUserCode());
+            model.addAttribute("userName",userByUser.get(0).getUserName());
             return "frame";
         }else{
             model.addAttribute("error","用户名或密码错误！");
-            return "redirect:/user/toLogin";
+            return "login";
         }
     }
     @RequestMapping("/loginOut")
@@ -50,8 +58,26 @@ public class UserController {
         return "redirect:/user/toLogin";
     }
     @RequestMapping("/userList")
-    public String userList(){
-        return "/user/userlist";
+    public String userList(Model model){
+        List<User> allUser = userMapper.getAllUser();
+        List<Role> allRole = iRoleService.getAllRole();
+        model.addAttribute("userList",allUser);
+        model.addAttribute("roleList",allRole);
+        System.out.println(allUser);
+        return "userlist";
+    }
+    @RequestMapping("/deleteUser/{id}")
+    public String deleteUser(@PathVariable("id") Integer id){
+        iUserService.deleteUser(id);
+        System.out.println(id);
+        return "redirect:/user/userList";
+    }
+    @RequestMapping("/toUpdateUserInfo/{id}")
+    public String toUpdateUserInfo(@PathVariable("id")Integer id,Model model){
+        User userById = iUserService.getUserById(id);
+        model.addAttribute("user",userById);
+        return "/updateUserInfo";
+
     }
 
 }

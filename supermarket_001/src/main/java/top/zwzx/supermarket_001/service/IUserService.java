@@ -22,12 +22,16 @@ public interface IUserService {
      */
     public List<User> getUserByPageSize(int no,int size);
 
+    public User getUserById(Integer id);
+
+
     /***
      * 用户注册
      * @param usre
      * @return =0注册失败 =1注册成功
      */
     public int insertUser(User usre);
+
 
     /***
      * 用户信息修改

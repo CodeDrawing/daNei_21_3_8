@@ -1,6 +1,7 @@
 package top.zwzx.supermarket_001.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import top.zwzx.supermarket_001.mapper.UserMapper;
 import top.zwzx.supermarket_001.pojo.User;
 
@@ -14,6 +15,7 @@ import java.util.List;
  * 细节：
  * 注意：
  */
+@Service
 public class UserServiceImpl implements IUserService{
 
     @Autowired
@@ -23,6 +25,12 @@ public class UserServiceImpl implements IUserService{
     public List<User> getUserByPageSize(int no, int size) {
         List<User> userByPageSize = userMapper.getUserByPageSize(no, size);
         return userByPageSize;
+    }
+
+    @Override
+    public User getUserById(Integer id) {
+        User userById = userMapper.getUserById(id);
+        return userById;
     }
 
     @Override
