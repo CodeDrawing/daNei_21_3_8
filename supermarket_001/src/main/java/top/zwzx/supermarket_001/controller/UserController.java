@@ -12,6 +12,7 @@ import top.zwzx.supermarket_001.service.IRoleService;
 import top.zwzx.supermarket_001.service.IUserService;
 
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -43,7 +44,8 @@ public class UserController {
         List<User> userByUser = userMapper.getUserByUser(user);
         if(userByUser.size()==1){
 //            httpSession.setAttribute("loginUser",user.getUserName());
-            httpSession.setAttribute("userName",user.getUserCode());
+            httpSession.setAttribute("userName", user.getUserCode());
+            httpSession.setAttribute("id", userByUser.get(0).getId());
 //            model.addAttribute("userName","sdf");
             model.addAttribute("userName",userByUser.get(0).getUserName());
             return "frame";
@@ -72,11 +74,22 @@ public class UserController {
         System.out.println(id);
         return "redirect:/user/userList";
     }
+
     @RequestMapping("/toUpdateUserInfo/{id}")
-    public String toUpdateUserInfo(@PathVariable("id")Integer id,Model model){
+    public String toUpdateUserInfo(@PathVariable("id") Integer id, Model model) {
         User userById = iUserService.getUserById(id);
-        model.addAttribute("user",userById);
+        model.addAttribute("user", userById);
         return "/updateUserInfo";
+
+    }
+
+    @RequestMapping("/updateUserInfo")
+    public String updateUserInfo(User user, Model model, HttpSession httpSession) {
+        System.out.println("更新了用户信息");
+        user.setModifyBy((Integer) httpSession.getAttribute("id"));
+        user.setModifyDate(new Date());
+        int i = iUserService.updateUser(user);
+        return "redirect:/user/userList";
 
     }
 

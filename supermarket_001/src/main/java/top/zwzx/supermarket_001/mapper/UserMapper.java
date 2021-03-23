@@ -37,8 +37,8 @@ public interface UserMapper {
     public List<User> getUserByPageSize(int no, int size);
 
     //    用户修改信息
-    @Update("update smbms_user set userName=#{userName},userPassword=#{userPassword},gender=#{gender},birthday=#{birthday},phone=#{phone},address=#{address},modifyBy=#{modifyBy},modify=#{modify}")
-    public int updateuser(User user);
+    @Update("update smbms_user set userName=#{userName},gender=#{gender},birthday=#{birthday},phone=#{phone},address=#{address},modifyBy=#{modifyBy},modifyDate=#{modifyDate} where id=#{id}")
+    public int updateUser(User user);
 
 //    用户删除
     @Delete("delete from smbms_user where id=#{id}")

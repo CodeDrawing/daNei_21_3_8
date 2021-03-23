@@ -9,8 +9,8 @@
 	</div>
 
 
-	<form>
-		<div >
+	<form action="${pageContext.request.contextPath}/user/updateUserInfo" name="" method="post">
+		<div>
 			<input name="id" value="${user.id}" type="hidden">
 			<div style="margin: 3%">
 				<label>userName</label>
@@ -22,7 +22,7 @@
 			</div>
 			<div style="margin: 3%">
 				<label>birthday</label>
-				<input type="text" name="birthday" value="${user.birthday}">
+				<input type="date" name="birthday" value="${user.birthday}">
 			</div>
 			<div style="margin: 3%">
 				<label>phone</label>
