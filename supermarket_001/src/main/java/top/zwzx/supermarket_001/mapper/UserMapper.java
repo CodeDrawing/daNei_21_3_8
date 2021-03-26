@@ -16,7 +16,6 @@ import java.util.List;
  * 注意：
  */
 @Mapper
-@Repository
 public interface UserMapper {
     //用户登录
     @Select("select * from smbms_user where userCode=#{userCode} and userPassword=#{userPassword}")
@@ -43,5 +42,11 @@ public interface UserMapper {
 //    用户删除
     @Delete("delete from smbms_user where id=#{id}")
     public int deleteuser(int Userid);
+
+//    查询用户
+    public List<User> queryUser(String queryName,String userRole);
+
+//   添加用户
+    public void addUser(User user);
 
 }

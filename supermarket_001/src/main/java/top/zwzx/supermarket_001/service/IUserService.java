@@ -46,4 +46,10 @@ public interface IUserService {
      * @return
      */
     public int deleteUser(Integer id);
+
+    public List<User> queryUser(String queryName,String userRole);
+
+    public void addUser(User user);
+
+
 }

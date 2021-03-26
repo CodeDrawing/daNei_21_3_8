@@ -50,4 +50,15 @@ public class UserServiceImpl implements IUserService{
         int deleteuser = userMapper.deleteuser(id);
         return deleteuser;
     }
+
+    @Override
+    public List<User> queryUser(String queryName, String userRole) {
+        List<User> users = userMapper.queryUser(queryName, userRole);
+        return users;
+    }
+
+    @Override
+    public void addUser(User user) {
+        userMapper.addUser(user);
+    }
 }

@@ -9,11 +9,10 @@
     <title>超市订单管理系统</title>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/statics/css/style.css" />
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/statics/css/public.css" />
-    <link type="text/css" rel="stylesheet" href="https://heerey525.github.io/layui-v2.4.3/layui-v2.4.5/css/layui.css" />
+    <link rel="stylesheet" type="text/css" href="https://www.layuicdn.com/layui/css/layui.css" />
     <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="https://heerey525.github.io/layui-v2.4.3/layui-v2.4.5/layui.js"></script>
-
+    <script src="https://www.layuicdn.com/layui/layui.js"></script>
 
 </head>
 <body>
@@ -36,6 +35,7 @@
          <h2 class="leftH2"><span class="span1"></span>功能列表 <span></span></h2>
          <nav>
              <ul class="list">
+                 <li ><a href="${pageContext.request.contextPath }/user/index">首页</a></li>
                  <li ><a href="${pageContext.request.contextPath }/jsp/bill.do?method=query">订单管理</a></li>
               <li><a href="${pageContext.request.contextPath }/jsp/provider.do?method=query">供应商管理</a></li>
               <li><a href="${pageContext.request.contextPath }/user/userList">用户管理</a></li>

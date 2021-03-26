@@ -7,24 +7,27 @@
 <div class="layui-container">
 	数据统计
 	<div class="layui-row">
-		<div class="layui-col-xs5" style="margin-right: 10%">
+		<div class="layui-col-xs5"style="margin-right: 30px" >
 			<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
 				<legend>销售量最高</legend>
-				<div id="main" style="width: 200px;height:300px"></div>
+				<div id="main" style="width: 400px;height:300px"></div>
+<%--				111--%>
 			</fieldset>
 
 		</div>
 <%--		<div class="layui-col-xs2">--%>
 
 <%--		</div>--%>
-		<div class="layui-col-xs5"  style="margin-left: 20%">
+		<div class="layui-col-xs5" style="margin-left: 50px" >
 			<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
 				<legend>供应商分布</legend>
-				<div id="main1" style="width: 200px;height:300px"></div>
+				<div id="main1" style="width: 400px;height:300px"></div>
+<%--				222--%>
 			</fieldset>
 		</div>
 	</div>
 </div>
+
 
 
 <script type="text/javascript">

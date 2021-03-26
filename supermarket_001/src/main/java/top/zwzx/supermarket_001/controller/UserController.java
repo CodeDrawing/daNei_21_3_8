@@ -1,5 +1,6 @@
 package top.zwzx.supermarket_001.controller;
 
+import com.sun.xml.internal.ws.api.model.wsdl.WSDLFault;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -86,11 +87,8 @@ public class UserController {
 //        System.out.println(goods1);
 //        goods1.add(goodss);
 
-
         List<ShowData> allProductDescAndValue = iGoodsService.getAllProductDescAndValue();
         List<ShowData> allProvinceAndValue = iProviderService.getAllProvinceAndValue();
-        System.out.println(allProvinceAndValue);
-        System.out.println(allProductDescAndValue);
 
         map.put("topFive",allProductDescAndValue);
         map.put("provinceCount",allProvinceAndValue);
@@ -100,7 +98,7 @@ public class UserController {
 //        map.put(200,"饮料");
 //        map.put(200,"作业本");
 //        map.put(200,"饼干");
-        System.out.println(map);
+
         return map;
     }
     @RequestMapping("/login")
@@ -113,7 +111,7 @@ public class UserController {
             httpSession.setAttribute("id", userByUser.get(0).getId());
 //            model.addAttribute("userName","sdf");
             model.addAttribute("userName",userByUser.get(0).getUserName());
-            return "frame";
+            return "redirect:/user/index";
         }else{
             model.addAttribute("error","用户名或密码错误！");
             return "login";
@@ -156,6 +154,29 @@ public class UserController {
         int i = iUserService.updateUser(user);
         return "redirect:/user/userList";
 
+    }
+
+    @RequestMapping("/queryUser")
+    public String queryUser(String queryName,String queryUserRole,Model model){
+
+        List<User> users = iUserService.queryUser(queryName, queryUserRole);
+        List<Role> allRole = iRoleService.getAllRole();
+        model.addAttribute("userList",users);
+        model.addAttribute("roleList",allRole);
+        return "userlist";
+    }
+
+    @RequestMapping("/toAddUser")
+    public String toAddUser(){
+        return "/addUser";
+    }
+
+    @RequestMapping("/addUser")
+    public String addUser(User user,HttpSession session){
+        iUserService.addUser(user);
+        user.setCreatedBy((Integer) session.getAttribute("id"));
+        user.setCreationDate(new Date());
+        return "redirect:/user/userList";
     }
 
 }
