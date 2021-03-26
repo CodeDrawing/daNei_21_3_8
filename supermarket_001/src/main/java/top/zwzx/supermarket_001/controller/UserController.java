@@ -172,7 +172,15 @@ public class UserController {
     }
 
     @RequestMapping("/addUser")
-    public String addUser(User user,HttpSession session){
+    public String addUser(User user,HttpSession session,Model model){
+
+        if(iUserService.getUserByUserCode(user.getUserCode()).size()!=0){
+            model.addAttribute("msg","用户已存在，请重新输入");
+            return "/addUser";
+        }else if(!user.getUserPassword().equals(user.getConfirmPassword())){
+            model.addAttribute("msg","两次密码不一致");
+            return "/addUser";
+        }
         iUserService.addUser(user);
         user.setCreatedBy((Integer) session.getAttribute("id"));
         user.setCreationDate(new Date());

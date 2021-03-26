@@ -61,4 +61,10 @@ public class UserServiceImpl implements IUserService{
     public void addUser(User user) {
         userMapper.addUser(user);
     }
+
+    @Override
+    public List<User> getUserByUserCode(String userCode) {
+        List<User> userByUserCode = userMapper.getUserByUserCode(userCode);
+        return userByUserCode;
+    }
 }

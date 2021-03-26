@@ -31,6 +31,9 @@ public interface UserMapper {
     @Select("select * from smbms_user where id=#{id}")
     public User getUserById(Integer id);
 
+    @Select("select * from smbms_user where userCode=#{userCode}")
+    public List<User> getUserByUserCode(String userCode);
+
     //    分页获取
     @Select("select limit..... * from smbms_user")
     public List<User> getUserByPageSize(int no, int size);

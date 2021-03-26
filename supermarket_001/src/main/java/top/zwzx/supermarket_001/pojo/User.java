@@ -24,6 +24,7 @@ public class User {
     private String userCode;
     private String userName;
     private String userPassword;
+    private String confirmPassword;
     private Integer gender;
     private Date birthday;
     private String phone;

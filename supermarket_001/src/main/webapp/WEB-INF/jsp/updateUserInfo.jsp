@@ -8,7 +8,7 @@
         <span>用户信息修改</span>
     </div>
 
-${[msg]}
+
     <form class="layui-form" action="${pageContext.request.contextPath}/user/updateUserInfo" name="" method="post">
         <div>
             <input name="id" value="${user.id}" type="hidden">

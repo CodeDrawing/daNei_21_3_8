@@ -8,7 +8,7 @@
         <span>添加用户</span>
     </div>
 
-
+    <label style="color:red">${msg}</label>
     <form action="${pageContext.request.contextPath}/user/addUser" name="" method="post" id="form" class="layui-form">
         <div>
             <div class="layui-form-item">
