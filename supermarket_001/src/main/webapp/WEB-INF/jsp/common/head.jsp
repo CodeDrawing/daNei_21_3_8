@@ -9,6 +9,12 @@
     <title>超市订单管理系统</title>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/statics/css/style.css" />
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/statics/css/public.css" />
+    <link type="text/css" rel="stylesheet" href="https://heerey525.github.io/layui-v2.4.3/layui-v2.4.5/css/layui.css" />
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://heerey525.github.io/layui-v2.4.3/layui-v2.4.5/layui.js"></script>
+
+
 </head>
 <body>
 <!--头部-->

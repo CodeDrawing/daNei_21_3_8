@@ -3,17 +3,21 @@ package top.zwzx.supermarket_001.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import top.zwzx.supermarket_001.mapper.UserMapper;
+import top.zwzx.supermarket_001.pojo.ShowData;
 import top.zwzx.supermarket_001.pojo.Role;
 import top.zwzx.supermarket_001.pojo.User;
+import top.zwzx.supermarket_001.service.IGoodsService;
+import top.zwzx.supermarket_001.service.IProviderService;
 import top.zwzx.supermarket_001.service.IRoleService;
 import top.zwzx.supermarket_001.service.IUserService;
 
 import javax.servlet.http.HttpSession;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * @Author: CodeDrawing
@@ -33,10 +37,71 @@ public class UserController {
     private IRoleService iRoleService;
     @Autowired
     private IUserService iUserService;
+    @Autowired
+    private IGoodsService iGoodsService;
+    @Autowired
+    private IProviderService iProviderService;
+
+
+    @RequestMapping("/index")
+    public String index(){
+        return "index";
+    }
 
     @RequestMapping("/toLogin")
     public String toLogin(User user){
         return "login";
+    }
+    @RequestMapping("/getDate")
+    @ResponseBody
+    @CrossOrigin
+    public Map getDate(){
+        HashMap<String, List<ShowData>> map = new HashMap<>();
+//        Goods goods = new Goods();
+//
+//        goods.setName("洗发水");
+//        goods.setValue(5);
+//        System.out.println(goods);
+//        System.out.println(goods1);
+//        goods1.add(goods);
+//
+//        Goods goodss = new Goods();
+//        goodss.setName("饮料");
+//        goodss.setValue(3);
+//        System.out.println(goodss);
+//        System.out.println(goods1);
+//        goods1.add(goodss);
+//
+//        Goods goodsss = new Goods();
+//        goodsss.setName("卫生纸");
+//        goodsss.setValue(8);
+//        System.out.println(goodsss);
+//        System.out.println(goods1);
+//        goods1.add(goodss);
+
+//        Goods goodssss = new Goods();
+//        goodssss.setName("本子");
+//        goodssss.setValue(1);
+//        System.out.println(goodssss);
+//        System.out.println(goods1);
+//        goods1.add(goodss);
+
+
+        List<ShowData> allProductDescAndValue = iGoodsService.getAllProductDescAndValue();
+        List<ShowData> allProvinceAndValue = iProviderService.getAllProvinceAndValue();
+        System.out.println(allProvinceAndValue);
+        System.out.println(allProductDescAndValue);
+
+        map.put("topFive",allProductDescAndValue);
+        map.put("provinceCount",allProvinceAndValue);
+
+//        map.put()
+//        map.put(200,"洗发水");
+//        map.put(200,"饮料");
+//        map.put(200,"作业本");
+//        map.put(200,"饼干");
+        System.out.println(map);
+        return map;
     }
     @RequestMapping("/login")
     public String login(User user, HttpSession httpSession, Model model){

@@ -32,7 +32,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**").excludePathPatterns("/user/login","/user/toLogin","/statics/**");
+        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**").excludePathPatterns("/user/login","/user/toLogin","/user/index","/user/getDate","/statics/**");
     }
 //    ,"/WEB-INF/login.jsp","/WEB-INF/lib/**","/WEB-INF/classes/**"
 

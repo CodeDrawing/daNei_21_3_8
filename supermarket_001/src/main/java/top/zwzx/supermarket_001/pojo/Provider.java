@@ -25,4 +25,5 @@ public class Provider {
     private Integer modifyBy;
     private Date modifyDate;
     private Integer providerId;
+    private String province;
 }
