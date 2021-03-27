@@ -36,7 +36,7 @@
          <nav>
              <ul class="list">
                  <li ><a href="${pageContext.request.contextPath }/user/index">首页</a></li>
-                 <li ><a href="${pageContext.request.contextPath }/jsp/bill.do?method=query">订单管理</a></li>
+                 <li ><a href="${pageContext.request.contextPath }/bill/showBill">订单管理</a></li>
               <li><a href="${pageContext.request.contextPath }/jsp/provider.do?method=query">供应商管理</a></li>
               <li><a href="${pageContext.request.contextPath }/user/userList">用户管理</a></li>
               <li><a href="${pageContext.request.contextPath }/jsp/pwdmodify.jsp">密码修改</a></li>

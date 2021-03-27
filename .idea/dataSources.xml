@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="supermakertemanagersystem@localhost [2]" uuid="01b5af4c-a2c7-43f7-b8fc-ea8fb627c267">
+    <data-source source="LOCAL" name="supermakertemanagersystem@localhost" uuid="b291f142-dcbb-4bcb-8b1d-8a9bd26bd098">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/supermakertemanagersystem</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
+      <driver-properties>
+        <property name="serverTimezone" value="UTC" />
+      </driver-properties>
     </data-source>
   </component>
 </project>
