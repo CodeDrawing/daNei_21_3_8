@@ -10,7 +10,7 @@
 
 
     <form class="layui-form" action="${pageContext.request.contextPath}/user/updateUserInfo" name="" method="post">
-        <div>
+        <div style="width:30%">
             <input name="id" value="${user.id}" type="hidden">
             <div style="margin: 3%" class="layui-form-item">
                 <label class="layui-form-label">用户名</label>

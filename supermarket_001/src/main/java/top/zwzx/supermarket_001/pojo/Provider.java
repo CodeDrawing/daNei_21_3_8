@@ -3,27 +3,23 @@ package top.zwzx.supermarket_001.pojo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
-import java.util.Date;
-
-
-@Data
+@Data  //添加了所有的set get toString 方法
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 public class Provider {
-    private Integer billCode;
-    private String productName;
-    private String productDesc;
-    private String productUnit;
-    private Float productCount;
-    private Float totalPrice;
-    private Integer isPayment;
-    private Integer createdBy;
-    private Date creationDate;
-    private Integer modifyBy;
-    private Date modifyDate;
-    private Integer providerId;
+    private int id;
+    private String proCode;
+    private String proName;
+    private String proDesc;
+    private String proContact;
+    private String proPhone;
+    private String proAddress;
+    private String proFax;
+    private int createdBy;
+    private String creationDate;
+    private String modifyDate;
+    private int modifyBy;
     private String province;
+
 }

@@ -67,4 +67,9 @@ public class UserServiceImpl implements IUserService{
         List<User> userByUserCode = userMapper.getUserByUserCode(userCode);
         return userByUserCode;
     }
+
+    @Override
+    public void updatePasswordById(User user) {
+        userMapper.updatePasswordById(user);
+    }
 }

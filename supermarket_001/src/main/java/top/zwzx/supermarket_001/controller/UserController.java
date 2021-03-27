@@ -1,6 +1,5 @@
 package top.zwzx.supermarket_001.controller;
 
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLFault;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,9 +12,9 @@ import top.zwzx.supermarket_001.pojo.ShowData;
 import top.zwzx.supermarket_001.pojo.Role;
 import top.zwzx.supermarket_001.pojo.User;
 import top.zwzx.supermarket_001.service.IGoodsService;
-import top.zwzx.supermarket_001.service.IProviderService;
 import top.zwzx.supermarket_001.service.IRoleService;
 import top.zwzx.supermarket_001.service.IUserService;
+import top.zwzx.supermarket_001.service.ProviderServices;
 
 import javax.servlet.http.HttpSession;
 import java.util.*;
@@ -41,7 +40,7 @@ public class UserController {
     @Autowired
     private IGoodsService iGoodsService;
     @Autowired
-    private IProviderService iProviderService;
+    private ProviderServices providerServices;
 
 
     @RequestMapping("/index")
@@ -88,7 +87,7 @@ public class UserController {
 //        goods1.add(goodss);
 
         List<ShowData> allProductDescAndValue = iGoodsService.getAllProductDescAndValue();
-        List<ShowData> allProvinceAndValue = iProviderService.getAllProvinceAndValue();
+        List<ShowData> allProvinceAndValue = providerServices.getAllProvinceAndValue();
 
         map.put("topFive",allProductDescAndValue);
         map.put("provinceCount",allProvinceAndValue);
@@ -185,6 +184,33 @@ public class UserController {
         user.setCreatedBy((Integer) session.getAttribute("id"));
         user.setCreationDate(new Date());
         return "redirect:/user/userList";
+    }
+    @RequestMapping("/toUpdatePassword")
+    public String toUpdatePassword(){
+        return "/updatePassword";
+    }
+    @RequestMapping("/updatePassword")
+    @ResponseBody
+    @CrossOrigin
+    public Map updatePassword(HttpSession session,User user){
+        System.out.println(user);
+        HashMap<String, Object> map = new HashMap<>();
+        User id = iUserService.getUserById((Integer) session.getAttribute("id"));
+        System.out.println(user.getOriginalPassword());
+        if(!user.getOriginalPassword().equals(id.getUserPassword())){
+            map.put("result",3015);
+
+        }else if(!user.getUserPassword().equals(user.getConfirmPassword())){
+            map.put("result",3012);
+
+        }else{
+            user.setId((Integer) session.getAttribute("id"));
+            iUserService.updatePasswordById(user);
+            map.put("result",2012);
+
+        }
+
+        return map;
     }
 
 }

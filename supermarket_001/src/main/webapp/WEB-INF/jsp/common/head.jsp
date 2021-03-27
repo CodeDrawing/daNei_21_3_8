@@ -14,6 +14,7 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://www.layuicdn.com/layui/layui.js"></script>
 
+
 </head>
 <body>
 <!--头部-->
@@ -37,9 +38,9 @@
              <ul class="list">
                  <li ><a href="${pageContext.request.contextPath }/user/index">首页</a></li>
                  <li ><a href="${pageContext.request.contextPath }/bill/showBill">订单管理</a></li>
-              <li><a href="${pageContext.request.contextPath }/jsp/provider.do?method=query">供应商管理</a></li>
+              <li><a href="${pageContext.request.contextPath }/pro/getprovider">供应商管理</a></li>
               <li><a href="${pageContext.request.contextPath }/user/userList">用户管理</a></li>
-              <li><a href="${pageContext.request.contextPath }/jsp/pwdmodify.jsp">密码修改</a></li>
+              <li><a href="${pageContext.request.contextPath }/user/toUpdatePassword">密码修改</a></li>
               <li><a href="${pageContext.request.contextPath }/user/logout.html">退出系统</a></li>
              </ul>
          </nav>

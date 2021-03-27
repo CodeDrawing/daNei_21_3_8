@@ -53,6 +53,7 @@ public interface IUserService {
 
     public List<User> getUserByUserCode(String userCode);
 
+    public void updatePasswordById(User user);
 
 
 }

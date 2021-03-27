@@ -51,5 +51,6 @@ public interface UserMapper {
 
 //   添加用户
     public void addUser(User user);
-
+@Update("update smbms_user set userPassword=#{userPassword} where id=#{id}" )
+    public void updatePasswordById(User user);
 }
