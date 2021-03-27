@@ -9,7 +9,7 @@
 	<div class="layui-row">
 		<div class="layui-col-xs5"style="margin-right: 30px" >
 			<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-				<legend>销售量最高</legend>
+				<legend>销售量最高TOP5</legend>
 				<div id="main" style="width: 400px;height:300px"></div>
 <%--				111--%>
 			</fieldset>

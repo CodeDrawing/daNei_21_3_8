@@ -1,9 +1,8 @@
 package top.zwzx.supermarket_001.mapper;
 
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import top.zwzx.supermarket_001.pojo.Bill;
+import top.zwzx.supermarket_001.pojo.User;
 
 import java.util.List;
 
@@ -29,4 +28,11 @@ public interface BillMapper {
     @Select("select * from smbms_bill where billCode=#{billCode}")
     public List<Bill> getBillByBillCode(String billCode);
 
+    @Delete("delete from smbms_bill where id=#{id}")
+    public int deleteBillById(Integer id);
+    @Select("select * from smbms_bill where id=#{id}")
+    public Bill getBillById(Integer id);
+
+    @Update("update smbms_bill set productName=#{productName},productDesc=#{productDesc},productUnit=#{productUnit},productCount=#{productCount},totalPrice=#{totalPrice},isPayment=#{isPayment},modifyBy=#{modifyBy},modifyDate=#{modifyDate} where id=#{id}")
+    public void updateBill(Bill bill);
 }

@@ -10,7 +10,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-//@Serialization
+@Serialization
 public class ShowData {
     private String name;
     private Integer value;

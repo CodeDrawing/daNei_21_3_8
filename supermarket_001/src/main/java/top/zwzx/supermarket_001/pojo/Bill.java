@@ -6,13 +6,16 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.util.Date;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 public class Bill {
     private Integer id;
+
+    public String getBillCode() {
+        return billCode;
+    }
+
     private String billCode;
     private String productName;
     private String productDesc;
@@ -20,7 +23,17 @@ public class Bill {
     private String productCount;
     private Float totalPrice;
     private Integer isPayment;
+
+    public void setCreatedBy(Integer createdBy) {
+        this.createdBy = createdBy;
+    }
+
     private Integer createdBy;
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
     private Date creationDate;
     private Integer modifyBy;
     private Date modifyDate;

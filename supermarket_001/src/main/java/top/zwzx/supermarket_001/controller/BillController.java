@@ -64,4 +64,24 @@ public class BillController {
         iBillService.addBill(bill);
         return "redirect:/bill/showBill";
     }
+    @RequestMapping("/deleteBillById/{id}")
+    @ResponseBody
+    @CrossOrigin
+    public void deleteBillById(@PathVariable("id")Integer id){
+        iBillService.deleteBillById(id);
+    }
+
+
+
+    @RequestMapping("/toUpdateBill/{id}")
+    public String updateBill(@PathVariable("id") Integer id,Model model){
+        Bill bill = iBillService.getBillById(id);
+        model.addAttribute("bill",bill);
+        return "/updateBill";
+    }
+    @RequestMapping("/updateBill")
+    public String updateBill(Bill bill){
+        iBillService.updateBill(bill);
+        return "redirect:/bill/showBill";
+    }
 }

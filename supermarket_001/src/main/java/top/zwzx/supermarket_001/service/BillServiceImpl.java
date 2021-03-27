@@ -44,4 +44,21 @@ public class BillServiceImpl implements  IBillService{
         List<Bill> billByBillCode = billMapper.getBillByBillCode(billCode);
         return billByBillCode;
     }
+
+    @Override
+    public int deleteBillById(Integer id) {
+        int i = billMapper.deleteBillById(id);
+        return i;
+    }
+
+    @Override
+    public Bill getBillById(Integer id) {
+        Bill billById = billMapper.getBillById(id);
+        return billById;
+    }
+
+    @Override
+    public void updateBill(Bill bill) {
+        billMapper.updateBill(bill);
+    }
 }

@@ -17,6 +17,9 @@ public interface IBillService {
     public Integer getCountForBill();
     public void addBill(Bill bill);
     public List<Bill> getBillByBillCode(String billCode);
+    public int deleteBillById(Integer id);
+    public Bill getBillById(Integer id);
+    public void updateBill(Bill bill);
 
 
 }

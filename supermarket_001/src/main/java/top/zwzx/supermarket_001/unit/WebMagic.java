@@ -15,7 +15,7 @@ public class WebMagic {
 //        声明spider
        Spider spider= Spider.create(new PageProcessorMV());
 //       设置spider的参数
-        spider.addUrl("http://lib.njtc.edu.cn/pagelist2-4e944354be7c4b47ba855ab19960c1f3.html");
+        spider.addUrl("http://lib.njtc.edu.cn/pagelist-6a580b31227449b1b37a303df6378932.html");
         spider.thread(5);
         spider.run();
     }
