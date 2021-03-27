@@ -13,6 +13,10 @@ import java.util.List;
  * 注意：
  */
 public interface IBillService {
-    public List<Bill> getAllBill();
+    public List<Bill> getAllBill(Integer page,Integer limit);
+    public Integer getCountForBill();
+    public void addBill(Bill bill);
+    public List<Bill> getBillByBillCode(String billCode);
+
 
 }

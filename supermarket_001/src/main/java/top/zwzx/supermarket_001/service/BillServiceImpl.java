@@ -22,8 +22,26 @@ public class BillServiceImpl implements  IBillService{
     private BillMapper billMapper;
 
     @Override
-    public List<Bill> getAllBill() {
-        List<Bill> allBill = billMapper.getAllBill();
+    public List<Bill> getAllBill(Integer page,Integer limit) {
+        List<Bill> allBill = billMapper.getAllBill((page-1)*limit,limit);
+//        System.out.println(page+" ,"+limit);
         return allBill;
+    }
+
+    @Override
+    public Integer getCountForBill() {
+        Integer countForBill = billMapper.getCountForBill();
+        return countForBill;
+    }
+
+    @Override
+    public void addBill(Bill bill) {
+        billMapper.addBill(bill);
+    }
+
+    @Override
+    public List<Bill> getBillByBillCode(String billCode) {
+        List<Bill> billByBillCode = billMapper.getBillByBillCode(billCode);
+        return billByBillCode;
     }
 }

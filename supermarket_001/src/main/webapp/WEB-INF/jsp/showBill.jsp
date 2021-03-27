@@ -7,10 +7,11 @@
         <strong>你现在所在的位置是:</strong>
         <span>账单管理</span>
     </div>
-
+<%--    <div class="search">--%>
+        <a href="${pageContext.request.contextPath }/bill/toAddBill" class="layui-btn">添加订单</a>
+<%--    </div>--%>
+x
     <table class="layui-hide" id="test"></table>
-
-
     <script>
         layui.use('table', function(){
             var table = layui.table;
@@ -18,15 +19,16 @@
             table.render({
                 elem: '#test'
                 ,url:'/bill/getAllBill/'
+                ,page:true
                 ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
                 ,cols: [[
-                    ,{field:'billCode', width:140, title: '账单号'}
-                    ,{field:'productName', width:80, title: '产品名称', sort: true}
-                    ,{field:'productDesc', width:80, title: '产品描述'}
-                    ,{field:'productUnit', title: '单位', width: 50,sort: true} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+                    ,{field:'billCode',title: '账单号',sort: true}
+                    ,{field:'productName',  title: '产品名称', sort: true}
+                    ,{field:'productDesc',  title: '产品描述',sort: true}
+                    ,{field:'productUnit', title: '单位',sort: true} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
                     ,{field:'productCount', title: '商品数量', sort: true}
-                    ,{field:'totalPrice', title: '商品总额', }
-                    ,{field:'isPayment', title: '是否支付'}
+                    ,{field:'totalPrice', title: '商品总额',sort: true }
+                    ,{field:'isPayment', title: '是否支付',sort: true}
                 ]]
             });
         });
