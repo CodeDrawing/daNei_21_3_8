@@ -13,16 +13,16 @@
 <body>
  		<div class="page-bar">
 			<ul class="page-num-ul clearfix">
-				<li>共${param.totalCount }条记录&nbsp;&nbsp; ${param.currentPageNo }/${param.totalPageCount }页</li>
-				<c:if test="${param.currentPageNo > 1}">
+				<li>共${totalCount }条记录&nbsp;&nbsp; ${currentPageNo }/${totalPageCount }页</li>
+				<c:if test="${currentPageNo > 1}">
 					<a href="javascript:page_nav(document.forms[0],1);">首页</a>
-					<a href="javascript:page_nav(document.forms[0],${param.currentPageNo-1});">上一页</a>
+					<a href="${pageContext.request.contextPath }/pro/getprovider?currentPageNo=${currentPageNoFor}">上一页</a>
 				</c:if>
-				<c:if test="${param.currentPageNo < param.totalPageCount }">
-					<a href="javascript:page_nav(document.forms[0],${param.currentPageNo+1 });">下一页</a>
-					<a href="javascript:page_nav(document.forms[0],${param.totalPageCount });">最后一页</a>
+				<c:if test="${currentPageNo < totalPageCount }">
+					<a href="${pageContext.request.contextPath }/pro/getprovider?currentPageNo=${currentPageNoNext}">下一页</a>
+					<a href="${pageContext.request.contextPath }/pro/getprovider?currentPageNo=${totalPageCount }">最后一页</a>
 				</c:if>
-				&nbsp;&nbsp;
+				&nbsp;
 			</ul>
 		 <span class="page-go-form"><label>跳转至</label>
 	     <input type="text" name="inputPage" id="inputPage" class="page-key" />页

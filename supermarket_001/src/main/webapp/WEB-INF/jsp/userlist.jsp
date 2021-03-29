@@ -56,7 +56,7 @@
 							</span>
 				</td>
 				<td>
-					<span>${user.birthday.year}</span>
+					<span>${user.age}</span>
 
 				</td>
 				<td>

@@ -35,4 +35,5 @@ public class User {
     private Date creationDate;
     private Integer modifyBy;
     private Date modifyDate;
+    private int age;
 }

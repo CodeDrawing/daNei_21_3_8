@@ -44,7 +44,7 @@
                     var data = obj.data //获得当前行数据
                         ,layEvent = obj.event; //获得 lay-event 对应的值
                    if(layEvent === 'del'){
-                        layer.confirm('真的删除行么', function(index){
+                        layer.confirm('确定删除吗？', function(index){
                              //删除对应行（tr）的DOM结构
 
                             $.ajax({

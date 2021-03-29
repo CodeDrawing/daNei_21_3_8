@@ -17,6 +17,7 @@ import top.zwzx.supermarket_001.service.IUserService;
 import top.zwzx.supermarket_001.service.ProviderServices;
 
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -42,6 +43,17 @@ public class UserController {
     @Autowired
     private ProviderServices providerServices;
 
+    public List<User> AdduserAge(List<User> user){//用于显示用户信息
+        Date date=new Date();
+        int year=date.getYear()+1900;
+        for (int i=0;i<user.size();i++){
+            String nowdate= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(user.get(i).getBirthday());
+            int br=Integer.parseInt(nowdate.substring(0,4));
+            int age=year-br;
+            user.get(i).setAge(age);
+        }
+        return user;
+    }
 
     @RequestMapping("/index")
     public String index(){
@@ -102,7 +114,6 @@ public class UserController {
     }
     @RequestMapping("/login")
     public String login(User user, HttpSession httpSession, Model model){
-        System.out.println(user);
         List<User> userByUser = userMapper.getUserByUser(user);
         if(userByUser.size()==1){
 //            httpSession.setAttribute("loginUser",user.getUserName());
@@ -125,6 +136,9 @@ public class UserController {
     public String userList(Model model){
         List<User> allUser = userMapper.getAllUser();
         List<Role> allRole = iRoleService.getAllRole();
+
+        AdduserAge(allUser);
+
         model.addAttribute("userList",allUser);
         model.addAttribute("roleList",allRole);
         System.out.println(allUser);
@@ -141,13 +155,13 @@ public class UserController {
     public String toUpdateUserInfo(@PathVariable("id") Integer id, Model model) {
         User userById = iUserService.getUserById(id);
         model.addAttribute("user", userById);
+        System.out.println(userById);
         return "/updateUserInfo";
 
     }
 
     @RequestMapping("/updateUserInfo")
     public String updateUserInfo(User user, Model model, HttpSession httpSession) {
-        System.out.println("更新了用户信息");
         user.setModifyBy((Integer) httpSession.getAttribute("id"));
         user.setModifyDate(new Date());
         int i = iUserService.updateUser(user);

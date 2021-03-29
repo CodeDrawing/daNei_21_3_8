@@ -48,7 +48,7 @@
                 type: "post",
                 dataType: "json",
                 async: false,
-                url: "http://192.168.137.125/user/updatePassword",
+                url: "http://172.20.10.5/user/updatePassword",
                 data: {"originalPassword":originalPassword,"userPassword":userPassword,"confirmPassword":confirmPassword},
                 success: function (data) {
                     if (data.result == 3015) {

@@ -55,4 +55,10 @@ public class ProviderServiceImpl implements ProviderServices {
         List<ShowData> allProvinceAndValue = providerMapper.getAllProvinceAndValue();
         return allProvinceAndValue;
     }
+
+    @Override
+    public int getProviderCount() {
+        int providerCount = providerMapper.getProviderCount();
+        return providerCount;
+    }
 }

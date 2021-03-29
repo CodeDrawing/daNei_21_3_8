@@ -22,5 +22,6 @@ public interface ProviderServices {
 
     public int updateProvider(Provider provider);
     public List<ShowData> getAllProvinceAndValue();
+    public int getProviderCount();
 
 }

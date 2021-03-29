@@ -21,6 +21,9 @@ public interface ProviderMapper {
     @Select("select * from smbms_provider limit #{no},#{size}")
     public ArrayList<Provider> getProviderByNo(int no, int size);
 
+    @Select("select count(*) from smbms_provider")
+    public int getProviderCount();
+
     @Select("select * from smbms_provider where proName like '%${proName}%'")
     public ArrayList<Provider> getProviderByName(String proName);
 

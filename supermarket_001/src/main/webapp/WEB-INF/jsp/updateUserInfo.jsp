@@ -27,7 +27,7 @@
             <div style="margin: 3%" class="layui-form-item">
                 <label class="layui-form-label">生日</label>
                 <div class="layui-input-block">
-                    <input type="date" name="birthday" class="layui-input" value="${user.birthday}">
+                    <input type="date" name="birthday" class="layui-input" value="${dates.format(user.birthday,'yyyy-MM-dd')}" >
                 </div>
             </div>
             <div style="margin: 3%" class="layui-form-item">

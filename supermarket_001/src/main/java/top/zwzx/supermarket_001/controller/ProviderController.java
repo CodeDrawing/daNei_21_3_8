@@ -40,6 +40,13 @@ public class ProviderController {
                                  @RequestParam(name="size",defaultValue = "5") int size ){
         ArrayList<Provider> providers= providerServices.getProviderByNo(currentPageNo,size);
         model.addAttribute("providerList",providers);
+        int providerCount = providerServices.getProviderCount();
+        model.addAttribute("totalCount",providerCount);
+        model.addAttribute("currentPageNo",currentPageNo);
+        model.addAttribute("currentPageNoNext",currentPageNo+1);
+        model.addAttribute("currentPageNoFor",currentPageNo-1);
+        model.addAttribute("totalPageCount",providerCount/size);
+
         return "pro/provider";
     }
 
@@ -47,17 +54,19 @@ public class ProviderController {
     public String selectProvider(Model model, HttpServletRequest request,@RequestParam(name="currentPageNo",defaultValue = "1") int currentPageNo,
                                  @RequestParam(name="size",defaultValue = "5") int size ){
         String name=request.getParameter("queryname");
-        System.out.println(name);
-        System.out.println(name.equals(""));
-//        if(name.equals("")){
+//        System.out.println(name);
+//        System.out.println(name.equals(""));
+        if(name.equals("")){
 //            ArrayList<Provider> providers=providerServices.getProviderByNo(currentPageNo,size);
 //            model.addAttribute("providerList",providers);
-//        }else{
+            return "redirect:/pro/getprovider";
+        }else{
         ArrayList<Provider> providers=providerServices.getProviderByName(name);
         System.out.println(providers);
         model.addAttribute("providerList",providers);
-//        }
-        return "pro/provider";
+            return "pro/provider";
+        }
+
     }
     @RequestMapping("/addProviderpage")
     public String AddProviderPage(){
